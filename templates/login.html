@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Login - FavQs App{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto">
+    <div class="bg-zinc-800 border border-zinc-700 p-8">
+        <h2 class="text-3xl font-bold text-green-600 mb-6">Login</h2>
+        
+        <form method="POST" action="{{ url_for('login') }}">
+            <div class="mb-4">
+                <label for="username" class="block text-zinc-300 mb-2">Username</label>
+                <input type="text" 
+                       id="username" 
+                       name="username" 
+                       required
+                       class="w-full bg-zinc-700 border border-zinc-600 text-white px-4 py-3 focus:outline-none focus:border-green-600">
+            </div>
+            
+            <div class="mb-6">
+                <label for="password" class="block text-zinc-300 mb-2">Password</label>
+                <input type="password" 
+                       id="password" 
+                       name="password" 
+                       required
+                       class="w-full bg-zinc-700 border border-zinc-600 text-white px-4 py-3 focus:outline-none focus:border-green-600">
+            </div>
+            
+            <button type="submit" 
+                    class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 transition-colors">
+                Login
+            </button>
+        </form>
+        
+        <div class="mt-6 text-center">
+            <a href="{{ url_for('forgot_password') }}" class="text-green-600 hover:text-green-500">Forgot Password?</a>
+        </div>
+        
+        <div class="mt-4 text-center">
+            <p class="text-zinc-400">
+                Don't have an account? 
+                <a href="{{ url_for('signup') }}" class="text-green-600 hover:text-green-500">Sign up here</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

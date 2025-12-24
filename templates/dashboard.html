@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - FavQs App{% endblock %}
+
+{% block content %}
+<div class="bg-zinc-800 border border-zinc-700 p-8 text-center">
+    <h2 class="text-3xl font-bold text-green-600 mb-4">Welcome to Your Dashboard</h2>
+    <p class="text-zinc-300 text-lg">Hello, {{ session.username }}!</p>
+    <p class="text-zinc-400 mt-4">Your personalized quote experience starts here.</p>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Home - FavQs App{% endblock %}
+
+{% block content %}
+<div class="text-center mb-12">
+    <h1 class="text-5xl font-bold text-green-600 mb-4">Welcome to FavQs</h1>
+    <p class="text-xl text-zinc-300">Discover and share your favorite quotes</p>
+</div>
+
+{% if qotd %}
+<div class="bg-zinc-800 border-2 border-green-600 p-8 max-w-3xl mx-auto mb-8">
+    <h2 class="text-2xl font-bold text-green-600 mb-6">Quote of the Day</h2>
+    
+    <div class="mb-6">
+        <p class="text-2xl text-zinc-100 italic leading-relaxed">
+            "{{ qotd.body }}"
+        </p>
+    </div>
+    
+    <div class="flex flex-col gap-4">
+        <div>
+            <span class="text-zinc-400">Author: </span>
+            <a href="https://favqs.com/authors/{{ qotd.author }}" 
+               target="_blank"
+               class="text-green-600 hover:text-green-500 font-semibold">
+                {{ qotd.author }}
+            </a>
+        </div>
+        
+        {% if qotd.tags %}
+        <div>
+            <span class="text-zinc-400">Tags: </span>
+            {% for tag in qotd.tags %}
+                <a href="https://favqs.com/quotes/{{ tag }}" 
+                   target="_blank"
+                   class="inline-block bg-zinc-700 hover:bg-green-600 text-white px-3 py-1 mr-2 mb-2 transition-colors">
+                    {{ tag }}
+                </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+{% if not session.username %}
+<div class="text-center">
+    <div class="bg-zinc-800 border border-zinc-700 p-8 max-w-md mx-auto">
+        <h3 class="text-2xl font-bold mb-4">Get Started</h3>
+        <p class="text-zinc-300 mb-6">Sign up to save and share your favorite quotes</p>
+        <div class="flex gap-4 justify-center">
+            <a href="{{ url_for('signup') }}" 
+               class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 font-semibold transition-colors">
+                Sign Up
+            </a>
+            <a href="{{ url_for('login') }}" 
+               class="bg-zinc-700 hover:bg-zinc-600 text-white px-6 py-3 font-semibold transition-colors">
+                Login
+            </a>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
