@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="text-2xl font-bold mb-4">Quote of the Day</h1>
+  {% if quote %}
+    <div class="bg-white p-6 shadow rounded-none">
+      <p class="text-lg">"{{ quote.get('body') or quote.get('quote') or quote }}"</p>
+      <p class="mt-3 text-sm text-gray-600">— <a class="text-zinc-700 underline" href="https://favqs.com/quotes/search?q={{ quote.get('author')|urlencode }}">{{ quote.get('author') }}</a></p>
+      {% if quote.get('tags') %}
+        <div class="mt-3">
+          {% for t in quote.get('tags') %}
+            <a class="inline-block mr-2 px-3 py-1 rounded-none bg-gray-100 text-sm text-gray-700" href="https://favqs.com/quotes/tag/{{ t|urlencode }}">#{{ t }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  {% else %}
+    <p>Could not load quote of the day.</p>
+  {% endif %}
+{% endblock %}

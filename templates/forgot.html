@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1 class="text-2xl font-bold mb-4">Forgot password</h1>
+  <form method="post" class="bg-white p-6 shadow rounded-none max-w-md">
+    <label class="block mb-4">Email
+      <input name="email" type="email" required class="mt-1 block w-full border-gray-200 rounded-none p-2" />
+    </label>
+    <button class="px-4 py-2 rounded-none bg-zinc-700 text-white">Send reset link</button>
+  </form>
+{% endblock %}
